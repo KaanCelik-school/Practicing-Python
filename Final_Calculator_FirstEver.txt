@@ -1,0 +1,52 @@
+First week of my Python learning by OOP 2. I coded a small calculator. I first learned about the input types, then if/elif/else statements and how error handling worked with try/except. I first added addition then added multiplication. I learned that I did not need a main section as I needed it in C++. I also accidentally rewrote the result data by writing it the same way for addition and multiplication. It wrote the value of the last operation cause of it. After that I coded smarter and got rid of all the unnecessary complications. After that I added more definitions like subtraction and division. I wrote error handlings for non numeric values for starter inputs (x, y) and then wrote error handling for the Choice definition (I used def Choice so user can select which operation they wanted to do as an example 1 for addition 2 for subtraction as you'll see in the final code) because if any other numeric/alphabetic character input other than the selected ones would crash the code. Also another error handling for the special case of dividing something with 0. I learned how to write; if/elif/else statements, how inputs work in Python, how to handle errors, how to crash the system if needed and how to look at my code from different angles to make it more efficent. The code is as follows feel free to copy it and let me know about the suggestions:
+
+def WantedInput():
+    while True:
+        try:
+            x = int(input("please enter x: "))
+            y = int(input("please enter y: "))
+            return x, y
+        except ValueError:
+            print ("Please enter a valid number")
+            exit()
+def Addition(x, y):
+    return x + y
+    
+def Subtraction(x, y):
+    return x - y
+    
+def Multiplication(x, y):
+    return x * y
+
+def Division(x, y):
+    try:
+        return x / y
+    except ZeroDivisionError:
+        print("Error: Cannot divide by zero.")
+        exit()
+    
+def Choice(x, y):
+    while True:
+        try:
+            choice = int(input("Which operation would you like to do? 1 for addition, 2 for multiplication, 3 for subtraction and 4 for division: "))
+            if choice == 1:
+                return Addition(x, y)
+            elif choice == 2:
+                return Multiplication(x, y)
+            elif choice == 3:
+                return Subtraction(x ,y)
+            elif choice == 4:
+                return Division(x, y)
+            else: 
+                print("invalid choice")
+                return None
+        except ValueError:
+            print ("Enter a valid choice")
+
+x, y= WantedInput()
+result = Choice(x, y)
+if result is not None:
+    print("Result is:", result)
+
+    
+End of the week one calculator practice.
